@@ -1,7 +1,7 @@
 -- Verifica se tem app com MARS habilitado
 SELECT conn.session_id,
        sess.program_name,
-	      sess.host_name,
+       sess.host_name,
        sess.client_interface_name,
        sess.login_name,
        sess.status,
@@ -27,7 +27,7 @@ WHERE EXISTS
       (
           SELECT *
           FROM sys.dm_exec_connections b
-          WHERE b.net_transport = 'Session' -- Se tiver alguma conex„o com MARS, net_transport vai ser = "Session"
+          WHERE b.net_transport = 'Session' -- Se tiver alguma conex√£o com MARS, net_transport vai ser = "Session"
           AND conn.session_id = b.session_id
       ) 
 ORDER BY conn.session_id;
